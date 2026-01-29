@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8M | Día de la Mujer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Poppins;
+background:linear-gradient(120deg,#fbcfe8,#ddd6fe,#fce7f3);
+background-size:300% 300%;
+animation:bg 12s ease infinite;
+color:#1f2933;
+}
+
+@keyframes bg{
+50%{background-position:100% 50%}
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:30px;
+}
+
+.glass{
+background:rgba(255,255,255,.45);
+backdrop-filter:blur(20px);
+padding:40px 25px;
+border-radius:30px;
+max-width:900px;
+width:100%;
+box-shadow:0 30px 60px rgba(0,0,0,.2);
+text-align:center;
+}
+
+.hero h1{
+font-family:Playfair Display;
+font-size:42px;
+}
+
+.hero p{
+margin-top:10px;
+opacity:.8;
+}
+
+.hero img{
+width:100%;
+max-width:350px;
+margin:25px auto;
+border-radius:25px;
+box-shadow:0 15px 40px rgba(0,0,0,.2);
+}
+
+/* SECTIONS */
+
+.section{
+max-width:1000px;
+margin:60px auto;
+padding:0 20px;
+opacity:0;
+transform:translateY(40px);
+transition:.8s;
+}
+
+.section.show{
+opacity:1;
+transform:none;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+margin-top:30px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:25px;
+box-shadow:0 10px 25px rgba(0,0,0,.12);
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px) rotate(.3deg);
+}
+
+.card img{
+width:100%;
+height:160px;
+object-fit:cover;
+border-radius:20px;
+margin-bottom:10px;
+}
+
+/* TIMELINE */
+
+.timeline{
+position:relative;
+margin-top:40px;
+}
+
+.timeline:before{
+content:"";
+position:absolute;
+left:50%;
+top:0;
+width:4px;
+height:100%;
+background:#ec4899;
+transform:translateX(-50%);
+}
+
+.event{
+width:45%;
+padding:20px;
+background:white;
+border-radius:20px;
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+margin:25px 0;
+opacity:0;
+transition:.8s;
+}
+
+.event.left{margin-right:auto;transform:translateX(-40px)}
+.event.right{margin-left:auto;transform:translateX(40px)}
+
+.event.show{
+opacity:1;
+transform:none;
+}
+
+.quote{
+text-align:center;
+font-style:italic;
+margin-top:40px;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+.timeline:before{left:10px}
+.event{width:90%;margin-left:30px!important}
+.hero h1{font-size:32px}
+}
+
+footer{
+text-align:center;
+opacity:.6;
+margin:40px 0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+<div class="glass">
+<h1>🌸 Día Internacional de la Mujer</h1>
+<p>Una celebración de fuerza, historia y esperanza</p>
+
+<img src="https://source.unsplash.com/600x400/?women,portrait">
+
+</div>
+</div>
+
+<div class="section">
+<h2>¿Por qué se conmemora?</h2>
+<p>
+El 8 de marzo representa la lucha histórica de las mujeres por igualdad, respeto y oportunidades.
+</p>
+</div>
+
+<div class="section">
+<h2>Valores</h2>
+
+<div class="cards">
+<div class="card">💜 Igualdad</div>
+<div class="card">🔥 Valentía</div>
+<div class="card">🌎 Impacto</div>
+</div>
+</div>
+
+<div class="section">
+
+<h2>👩‍🏭 Mujeres trabajadoras de México</h2>
+
+<div class="cards">
+
+<div class="card"><img src="https://source.unsplash.com/400x300/?female,doctor"><h4>Salud</h4></div>
+<div class="card"><img src="https://source.unsplash.com/400x300/?female,teacher"><h4>Educación</h4></div>
+<div class="card"><img src="https://source.unsplash.com/400x300/?female,farmer"><h4>Campo</h4></div>
+<div class="card"><img src="https://source.unsplash.com/400x300/?female,engineer"><h4>Ingeniería</h4></div>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>🕰 Historia del 8M</h2>
+
+<div class="timeline">
+
+<div class="event left">1908 — Protesta de trabajadoras en Nueva York</div>
+<div class="event right">1910 — Clara Zetkin propone el 8M</div>
+<div class="event left">1911 — Primera conmemoración</div>
+<div class="event right">1917 — Mujeres rusas protestan</div>
+<div class="event left">1975 — ONU reconoce el día</div>
+
+</div>
+
+<div class="quote" id="quote"></div>
+
+</div>
+
+<footer>
+Proyecto universitario — Brayan
+</footer>
+
+<script>
+const frases=[
+"El futuro pertenece a las mujeres valientes.",
+"Educar a una mujer es cambiar el mundo.",
+"Mujeres fuertes crean sociedades fuertes."
+];
+
+setInterval(()=>{
+quote.innerText=frases[Math.floor(Math.random()*frases.length)];
+},3000);
+
+const sections=document.querySelectorAll('.section');
+const events=document.querySelectorAll('.event');
+
+window.addEventListener('scroll',()=>{
+sections.forEach(s=>{
+if(s.getBoundingClientRect().top<window.innerHeight-80)s.classList.add('show');
+});
+events.forEach(e=>{
+if(e.getBoundingClientRect().top<window.innerHeight-80)e.classList.add('show');
+});
+});
+</script>
+
+</body>
+</html>
